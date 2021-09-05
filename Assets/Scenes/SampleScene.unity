@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 1086915930}
   - component: {fileID: 1086915929}
   - component: {fileID: 1086915928}
+  - component: {fileID: 1086915932}
   - component: {fileID: 1086915927}
   m_Layer: 0
   m_Name: Player
@@ -354,7 +355,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 331f9b7e029576942b69be5b207ac178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,6 +412,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086915932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086915926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bf12fc7fb37554ca74bdb4d180249c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractorPlanet: {fileID: 1580697645}
+  moveSpeed: 1
 --- !u!1 &1580697640
 GameObject:
   m_ObjectHideFlags: 0
