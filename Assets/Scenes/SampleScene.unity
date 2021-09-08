@@ -525,5 +525,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bf12fc7fb37554ca74bdb4d180249c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractorPlanet: {fileID: 532192556}
+  Planet: {fileID: 532192556}
   moveSpeed: 1
