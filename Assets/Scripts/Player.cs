@@ -7,8 +7,10 @@ public class Player : MonoBehaviour {
     public Gravity Planet;
     public float moveSpeed;
 
+    private float constantSpeed = 5F;
     private Transform playerTransform;
     private Vector3 moveDirection;
+
 
     void Start()
     {
@@ -21,6 +23,14 @@ public class Player : MonoBehaviour {
     void Update()
     {
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+        if (Input.GetKey(KeyCode.LeftShift)) //Turbo
+        {
+            constantSpeed = constantSpeed * 2;
+            Debug.Log("Left Shift key is being pressed");
+        }
+
+        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
     }
 
     void FixedUpdate()
