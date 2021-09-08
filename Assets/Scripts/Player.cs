@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public Gravity attractorPlanet;
+    public Gravity Planet;
     public float moveSpeed;
 
     private Transform playerTransform;
@@ -27,9 +27,9 @@ public class Player : MonoBehaviour {
     {
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
 
-        if (attractorPlanet)
+        if (Planet)
         {
-            attractorPlanet.Attract(playerTransform);
+            Planet.Attract(playerTransform);
         }
     }
 }
