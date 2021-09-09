@@ -6,7 +6,9 @@ public class Player : MonoBehaviour {
 
     public Gravity Planet;
     public float moveSpeed;
-    public bool Turbo = false;
+    public bool Turbo;
+    public bool TurningRight;
+    public bool TurningLeft;   
 
     private float constantSpeed;
     private float idleSpeed = 5F;
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
 
         if (Input.GetKey(KeyCode.LeftShift)) //Enabling turbo on hold
         {
@@ -40,16 +42,23 @@ public class Player : MonoBehaviour {
             constantSpeed = idleSpeed;
         }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
+        if (Input.GetKey(KeyCode.D)) 
+        {
+            TurningLeft = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            TurningRight = false;
+        }
     }
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
-
         if (Planet)
         {
             Planet.Attract(playerTransform);
         }
+
     }
 }
