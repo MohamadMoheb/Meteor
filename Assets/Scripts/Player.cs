@@ -6,13 +6,16 @@ public class Player : MonoBehaviour {
 
     public Gravity Planet;
     public float moveSpeed;
+    public bool GameStarted;
+    public bool EngineState = false;
+
     public bool Turbo;
     public bool TurningRight;
     public bool TurningLeft;   
 
     private float constantSpeed;
     private float idleSpeed = 5F;
-    private float turboSpeed = 8F;
+    private float turboSpeed = 10F;
     private Transform playerTransform;
     private Vector3 moveDirection;
 
@@ -28,46 +31,66 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift)) //Enabling turbo on hold
+        if (Input.GetKeyDown(KeyCode.E)) //Toggle EngineState
         {
-            Turbo = true;
-            constantSpeed = turboSpeed;
-        }
+            if (EngineState == false) //Turn Engine on
+            {
+                EngineState = true;
+                GameStarted = true;
+                Debug.Log("Game Started");
+            }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift)) //Disabling turbo on release
-        {
-            Turbo = false;
-            constantSpeed = idleSpeed;
+            else
+            {
+                EngineState = false; //Turn Engine off
+            }
         }
-
-        if (Input.GetKey(KeyCode.D)) 
+        if (GameStarted == true)
         {
-            Vector3 rotationToAdd = new Vector3(0, 1, 0);
-            transform.Rotate(rotationToAdd);
-            TurningRight = true;
-        }
+            if (Input.GetKey(KeyCode.LeftShift)) //Enabling turbo on hold
+            {
+                Turbo = true;
+                constantSpeed = turboSpeed;
+            }
 
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            TurningRight = false;
-        }
+            if (Input.GetKeyUp(KeyCode.LeftShift)) //Disabling turbo on release
+            {
+                Turbo = false;
+                constantSpeed = idleSpeed;
+            }
 
-        if (Input.GetKey(KeyCode.A)) 
-        {
-            Vector3 rotationToAdd = new Vector3(0, -1, 0);
-            transform.Rotate(rotationToAdd);
-            TurningLeft = true;
-        }
+            if (Input.GetKey(KeyCode.D)) 
+            {
+                Vector3 rotationToAdd = new Vector3(0, 1, 0);
+                transform.Rotate(rotationToAdd);
+                TurningRight = true;
+            }
 
-        if (Input.GetKeyUp(KeyCode.A))
-        {
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                TurningRight = false;
+            }
+
+            if (Input.GetKey(KeyCode.A)) 
+            {
+                Vector3 rotationToAdd = new Vector3(0, -1, 0);
+                transform.Rotate(rotationToAdd);
+                TurningLeft = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.A))
+            {
             TurningLeft = false;
+            }
         }
     }
 
     void FixedUpdate()
-    {  
-        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
+    {
+        if (EngineState == true)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
+        }
 
         if (Planet)
         {
