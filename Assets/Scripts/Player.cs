@@ -7,8 +7,7 @@ public class Player : MonoBehaviour {
     public Gravity Planet;
     public float moveSpeed;
     public bool GameStarted;
-    public bool EngineState = false;
-
+    public bool EngineState;
     public bool Turbo;
     public bool TurningRight;
     public bool TurningLeft;   
