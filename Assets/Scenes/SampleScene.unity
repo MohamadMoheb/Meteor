@@ -272,7 +272,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 872fc323dbbcf414fa37a8af806e686a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 244bc70b44f3aa644aeb9eaafc4fd6c5, type: 2}
+      objectReference: {fileID: 2100000, guid: 772f603d75daa4b4fa59367920b5c9d1, type: 2}
     - target: {fileID: 919132149155446097, guid: 872fc323dbbcf414fa37a8af806e686a, type: 3}
       propertyPath: m_Name
       value: Planet
