@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public Gravity Planet;
-    public float moveSpeed;
     public bool GameStarted;
     public bool EngineState;
     public bool Turbo;
