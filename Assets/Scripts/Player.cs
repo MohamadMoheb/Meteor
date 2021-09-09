@@ -28,8 +28,6 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
-
         if (Input.GetKey(KeyCode.LeftShift)) //Enabling turbo on hold
         {
             Turbo = true;
@@ -44,17 +42,33 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D)) 
         {
-            TurningLeft = true;
+            Vector3 rotationToAdd = new Vector3(0, 1, 0);
+            transform.Rotate(rotationToAdd);
+            TurningRight = true;
         }
 
         if (Input.GetKeyUp(KeyCode.D))
         {
             TurningRight = false;
         }
+
+        if (Input.GetKey(KeyCode.A)) 
+        {
+            Vector3 rotationToAdd = new Vector3(0, -1, 0);
+            transform.Rotate(rotationToAdd);
+            TurningLeft = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            TurningLeft = false;
+        }
     }
 
     void FixedUpdate()
-    {
+    {  
+        transform.Translate(Vector3.forward * Time.deltaTime * constantSpeed); //Move forward automatically
+
         if (Planet)
         {
             Planet.Attract(playerTransform);
