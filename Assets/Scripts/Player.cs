@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     public bool EngineState;
     public bool Turbo;
     public bool TurningRight;
-    public bool TurningLeft;   
+    public bool TurningLeft;
 
     private float constantSpeed;
     private float idleSpeed = 5F;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
-        constantSpeed = idleSpeed; //constant speed is 0F at start.  
+        constantSpeed = idleSpeed; //constant speed is 0F at start.
 
         playerTransform = transform;
     }
